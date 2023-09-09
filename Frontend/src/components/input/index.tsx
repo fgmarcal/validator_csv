@@ -1,6 +1,7 @@
-// components/CSVSelector.tsx
+// components/CSVSelector.tsx 
+"use client";
 import React from "react";
-
+import Papa from "papaparse";
 type Props = {
   onChange(data: string[][]): void;
 };
@@ -11,29 +12,17 @@ const Input = ({ onChange }: Props) => {
       try {
         const file = e.target.files[0];
 
-
-        const fileUrl = URL.createObjectURL(file);
-
-
-        const response = await fetch(fileUrl);
-
-
-        const text = await response.text();
-
-
-        const lines = text.split("\n");
-
-
-        const _data = lines.map((line) => line.split(","));
-
-
-        onChange(_data);
+        Papa.parse<string[]>(file, {
+          worker: true, 
+          complete({ data }) {
+            onChange(data);
+          },
+        });
       } catch (error) {
         console.error(error);
       }
     }
   };
-
   return <input type="file" accept=".csv" onChange={handleFileChange} />;
 };
 
