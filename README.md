@@ -10,13 +10,13 @@ Utilizando Linux, instale o Docker para criar o container e iniciar o banco de d
 
 
 ```bash
-  cd ./db
+  cd /db
   docker compose up
 ```
 - Com o container criado e o servidor ativo, faça a conexão com a porta 3309 no MySQL.
 - Instale as dependências na pasta backend
 ```bash
-  cd ./Backend
+  cd /Backend
   npm install
 ```
 
@@ -29,9 +29,10 @@ Utilizando Linux, instale o Docker para criar o container e iniciar o banco de d
 ```bash
   npm run start
 ```
-- Na pasta ./Frontend, faça a inicialização da página.
+- Na pasta ./Frontend, faça a instalação das dependências e depois inicialização da página.
 ```bash
-  cd ./Frontend
+  cd /Frontend
+  npm install
   npm run start
 ```
 - A aplicação utilizará a porta 3000 para inicializar.

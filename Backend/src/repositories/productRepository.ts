@@ -4,23 +4,29 @@ import {prisma} from '../prisma/client';
 export class Products {
 
         getAllProducts = async (): Promise<products[]>=> {
-
                 const allProducts = await prisma.products.findMany();
                 return allProducts;
         }
 
-        updateProduct = async(code:number, salesPrice:number) =>{
-                return [code, salesPrice]
-        }      
-        
-        getUnique = async (code:any) => {
+        getUnique = async ({code}:products) => {
                 const item = await prisma.products.findUnique({
                         where: {
-                            code: code
+                                code: code
                         }
-                    });
-                    return item;
+                });
+                return item;
         }
-
-
+        
+        updateProduct = async(code:bigint, salesPrice:number) =>{
+                const update = await prisma.products.update({
+                        where:{
+                                code : code
+                        },
+                        data : {
+                                sales_price : salesPrice
+                        }
+                })
+                return update;
+        }      
+        
 }
