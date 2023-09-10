@@ -17,6 +17,7 @@ export class ProductsController{
             ? value.toString()
             : value
     ));
+        
         res.status(200).json(result);
     }
 
@@ -43,10 +44,12 @@ export class ProductsController{
     }
 
     updatePrice = async (req:Request, res: Response) => {
-        const {sales_price} = req.body;
-        const id = Number(req.params.code);
+        const salesPrice = req.params.sales_price;
+        const code = req.params.code;
+        const id = Number(code);
         try{
-            const updater = await products.updateProduct(sales_price, id);
+            
+            const updater = await products.updateProduct(salesPrice, id);
             res.status(201).json(updater)
         }
         catch(error){

@@ -17,12 +17,9 @@ export class Products {
                 });
                 return item;
         }
-
-        checkPrice = async () =>{
-                
-        }
         
         updateProduct = async(code:any, salesPrice:number) =>{
+                
                 const [isPack, quantity] = await prisma.$transaction(
                         [
                                 prisma.packs.findFirstOrThrow({where:{pack_id : code}}),

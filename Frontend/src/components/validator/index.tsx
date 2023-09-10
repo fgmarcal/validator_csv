@@ -1,15 +1,10 @@
-import React from "react";
-// import CSVHandler from "../CSVHandler";
+import React, { MouseEventHandler } from "react";
 
+const Valid = (func:MouseEventHandler, sender:string)=>{
 
-
-const Validator = ()=>{
-
-
-    return (
-        <>
-        </>
-    )
+    return (<>
+            <button type="submit" onClick={func}>{sender}</button>
+    </>)
 }
 
-export default Validator
+export default Valid;

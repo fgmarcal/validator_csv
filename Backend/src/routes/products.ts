@@ -11,7 +11,7 @@ productsRouter.get("/all",productsController.getAll);
 productsRouter.get("/:code", productsController.getOne);
 
 
-productsRouter.post("/:code", productsController.updatePrice);
+productsRouter.patch("/:code", productsController.updatePrice);
 
 
 

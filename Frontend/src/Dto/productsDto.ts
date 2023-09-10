@@ -5,3 +5,8 @@ export interface IProd {
     cost_price : number;
     sales_price : number;
 }
+
+export interface UpdateProdDto{
+    code : string;
+    sales_price : number;
+}
